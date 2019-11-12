@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Route::get ('/sections', 'SectionsController@index');
-Route::get ('/students', 'StudentsController@index');
+Route::get ('/students', 'SectionsController@students');
+

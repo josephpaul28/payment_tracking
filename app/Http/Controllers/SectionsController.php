@@ -6,11 +6,19 @@ use Illuminate\Http\Request;
 
 class SectionsController extends Controller
 {
-   public function index()
+    //
+    public function index()
    {
-
    	$sections = DB::table('sections')->get();
    	return view ('sections.index', compact('sections'));
    }
+   //join tables
+   public function students(){
+	if (Request()->has('section_id')) {
+		return DB::table('students')
+		->leftJoin('payments', 'students.id', '=', 'payments.student_id')
+		->where('section_id', Request()->section_id)->get();
+		}
+	}
 
 }
